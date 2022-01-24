@@ -21,7 +21,10 @@ class Storage
         std::cout << m_value << '\n';
     }
     
-    
+    ~Storage()
+    {
+        
+    };
 };
 
 template<>
@@ -38,6 +41,12 @@ Storage<char*>::Storage(char* s)
     
     for( int count=0; count<length;count++)
         m_value[count] = s[count];
+}
+
+template <>
+Storage<char*>::~Storage()
+{
+    delete[] m_value;
 }
 
 int main()
